@@ -15,5 +15,12 @@ app.post('/todos', (req,res)=>{
 	todo.save().then((doc)=>{res.send(doc);},(e)=>{res.status(400).send(e); });
 	console.log(req.body);});
 
+app.get('/todos', (req,res)=> {
+	Todo.find().then((todos)=>{
+		res.send ({todos});//good to send object so that you can add more properties later
+	}, (err)=>{res.status(400).send(e);
+	});
+});
+
 app.listen(3000,() => {console.log('starting app');});
 
